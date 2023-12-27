@@ -18,7 +18,17 @@ const productSchema = mongoose.Schema(
         image: {
             type: String,
             required: false,
-        }
+        },
+        firstName: {
+            type: String,
+            validate: {
+                validator: function (value) {
+                    return /^[a-zA-Z]+$/.test(value);
+                },
+                message: 'Invalid first name',
+            },
+        },
+        
     },
     {
         timestamps: true
